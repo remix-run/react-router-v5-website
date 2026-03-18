@@ -14,7 +14,7 @@ npm start
 ## GitHub Pages Build
 
 ```bash
-npm run build:pages
+npm run build
 ```
 
 This emits a `build/` directory that is ready for a GitHub Pages project site,
