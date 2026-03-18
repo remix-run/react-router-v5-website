@@ -11,6 +11,15 @@ npm install
 npm start
 ```
 
+## GitHub Pages Build
+
+```bash
+npm run build
+```
+
+This emits a `build/` directory that is ready for a GitHub Pages project site,
+including a repo-scoped base path, `404.html` SPA fallback, and `.nojekyll`.
+
 The site runs with the original webpack-based setup and serves the vendored docs,
 examples, and only the router source files the website actually needs.
 
