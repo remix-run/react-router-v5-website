@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -p",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && node scripts/prepare-static-build.js",
+    "build:pages": "npm run clean && cross-env NODE_ENV=production PUBLIC_PATH=/$npm_package_name/ webpack -p && node scripts/prepare-static-build.js",
+    "clean": "rm -rf build",
     "lint": "eslint modules",
     "start": "webpack-dev-server --inline --host 0.0.0.0"
   },

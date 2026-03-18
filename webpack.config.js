@@ -4,6 +4,17 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
+function normalizePublicPath(publicPath) {
+  if (!publicPath) return "/";
+  let normalized = publicPath.trim();
+  if (!normalized.startsWith("/")) normalized = `/${normalized}`;
+  if (!normalized.endsWith("/")) normalized = `${normalized}/`;
+  return normalized;
+}
+
+const publicPath = normalizePublicPath(process.env.PUBLIC_PATH);
+const basename = publicPath.replace(/\/$/, "");
+
 module.exports = {
   devtool: "source-map",
 
@@ -16,7 +27,7 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     filename: `bundle-[chunkHash].js`,
     chunkFilename: `[name]-[chunkHash].js`,
-    publicPath: "/"
+    publicPath
   },
 
   plugins: [
@@ -126,7 +137,12 @@ module.exports = {
       },
       {
         test: /\.md(\?(.+))?$/,
-        loader: "markdown-loader"
+        use: {
+          loader: "markdown-loader",
+          options: {
+            basename
+          }
+        }
       },
       {
         test: /\.(gif|jpe?g|png|ico)$/,
@@ -146,7 +162,7 @@ module.exports = {
     historyApiFallback: true,
     quiet: false,
     noInfo: false,
-    publicPath: "/",
+    publicPath,
     stats: {
       assets: true,
       version: false,
