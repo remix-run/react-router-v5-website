@@ -16,9 +16,9 @@ export default function SandboxExample({
         examplePath: path,
         gitInfo: {
           account: "remix-run",
-          repository: "react-router",
+          repository: "react-router-v5-website",
           host: "github",
-          branch: "v5"
+          branch: "main"
         },
         dependencies: dependencies,
         example: code
