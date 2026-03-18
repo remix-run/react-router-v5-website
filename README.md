@@ -1,7 +1,8 @@
 # React Router v5 Website
 
-This repository vendors the legacy React Router v5 website so it can run locally
-without depending on the upstream `remix-run/react-router` monorepo.
+This repository vendors the legacy React Router v5 website as a standalone app,
+without depending on the upstream `remix-run/react-router` monorepo to build the
+site.
 
 ## Local Development
 
@@ -11,14 +12,14 @@ npm start
 ```
 
 The site runs with the original webpack-based setup and serves the vendored docs,
-examples, and package source from this repository.
+examples, and only the router source files the website actually needs.
 
-## Included Upstream Content
+## Vendored Content
 
 - `modules`, `static`, `webpack`, `index.html.ejs`, and `webpack.config.js`
-- `packages/react-router`
-- `packages/react-router-dom`
-- `packages/react-router-native`
+- Minimal `react-router` runtime source used by the site
+- The markdown docs rendered by the site
+- The example source files used by the docs UI and CodeSandbox embeds
 
-Everything else from the old monorepo was intentionally left out for this first
-standalone local-development pass.
+Tests, publish/build scaffolding, transpiled package outputs, and unused upstream
+package files have been removed so this repo only contains what the website needs.
