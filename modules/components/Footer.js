@@ -2,7 +2,6 @@ import React from "react";
 import { Block, Inline } from "jsxstyle";
 
 import { DARK_GRAY, BRIGHT_GRAY, LIGHT_GRAY } from "../Theme.js";
-import MailingListSignup from "./MailingListSignup.js";
 
 function FooterLink({ href, ...rest }) {
   return (
@@ -15,8 +14,8 @@ function FooterLink({ href, ...rest }) {
   );
 }
 
-function Remix() {
-  return <FooterLink href="https://remix.run">Remix Software</FooterLink>;
+function RemixTeam() {
+  return <FooterLink href="https://remix.run">the Remix team</FooterLink>;
 }
 
 function Contributors() {
@@ -39,25 +38,22 @@ const year = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <Block>
-      <MailingListSignup />
-      <Block
-        background={DARK_GRAY}
-        color={BRIGHT_GRAY}
-        padding="40px"
-        textAlign="center"
-        fontSize="80%"
-      >
-        <Block component="p">
-          React Router is built and maintained by <Remix /> and hundreds of{" "}
-          <Contributors />.
-        </Block>
-        <Block marginTop="20px" color={LIGHT_GRAY}>
-          &copy; {year} Remix Software
-        </Block>
-        <Block color={LIGHT_GRAY}>
-          Code examples and documentation <CC />
-        </Block>
+    <Block
+      background={DARK_GRAY}
+      color={BRIGHT_GRAY}
+      padding="40px"
+      textAlign="center"
+      fontSize="80%"
+    >
+      <Block component="p" margin="0">
+        React Router is developed by <RemixTeam /> and maintained with help
+        from <Contributors />.
+      </Block>
+      <Block marginTop="20px" color={LIGHT_GRAY}>
+        &copy; {year} Shopify, Inc.
+      </Block>
+      <Block color={LIGHT_GRAY}>
+        Docs and examples <CC />
       </Block>
     </Block>
   );
