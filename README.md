@@ -17,8 +17,15 @@ npm start
 npm run build
 ```
 
-This emits a `build/` directory that is ready for a GitHub Pages project site,
-including a repo-scoped base path, `404.html` SPA fallback, and `.nojekyll`.
+This emits a `build/` directory that is ready for the `v5.reactrouter.com`
+GitHub Pages custom domain, including a root-relative base path, `404.html`
+SPA fallback, `.nojekyll`, and `CNAME`.
+
+To build for a GitHub Pages project site instead, override the public path:
+
+```bash
+PUBLIC_PATH=/react-router-v5-website/ npm run build
+```
 
 The site runs with the original webpack-based setup and serves the vendored docs,
 examples, and only the router source files the website actually needs.
